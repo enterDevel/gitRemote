@@ -16,11 +16,12 @@ namespace celec.bin.@base
             ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["Mantenimiento_ConnectionString"];
             if (settings != null)
             {
-                String ConnectionString = settings.ConnectionString;
-                OracleConnectionStringBuilder builder = new OracleConnectionStringBuilder(ConnectionString);
+                String _ConnectionString = settings.ConnectionString;
+                OracleConnectionStringBuilder builder = new OracleConnectionStringBuilder(_ConnectionString);
                 builder.UserID = userName;
                 builder.Password = userPassword;
-                return builder.ContextConnection.ToString();
+
+                return builder.ConnectionString.ToString() ;
             }
             return String.Empty;
         }
